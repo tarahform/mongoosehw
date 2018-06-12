@@ -35,7 +35,7 @@ app.get("/scrape", function (req, res) {
     request("https://www.npr.org/", function (error, response, html) {
         var $ = cheerio.load(html);
         $(".story-text").each(function (i, element) {
-            var title = $(element).children("a").children(".title").text().replace(/\\'/g,"");
+            var title = $(element).children("a").children(".title").text().replace(/\\'/g, "");
             // console.log('title: ', title);
             var link = $(element).children("a").attr("href");
             // console.log('link: ', link);
@@ -47,8 +47,10 @@ app.get("/scrape", function (req, res) {
                 summary: summary
             };
             // console.log("results: ", results);
-            db.Article.create(results, function (error, found) {
-                if (error) throw error;
+            db.Article.create(results).then(function (dbArticle) {
+                console.log(dbArticle);
+            }).catch(function (err) {
+                return res.json(err);
             })
         });
     })
