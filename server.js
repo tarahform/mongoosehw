@@ -34,19 +34,20 @@ mongoose.connect(MONGODB_URI);
 app.get("/scrape", function (req, res) {
     request("https://www.npr.org/", function (error, response, html) {
         var $ = cheerio.load(html);
-        $(".title").each(function (i, element) {
-            var title = $(element).text();
+        $(".story-text").each(function (i, element) {
+            var title = $(element).children("a").children(".title").text().replace(/\\'/g,"");
             // console.log('title: ', title);
-            var link = $(element).parent().attr("href");
+            var link = $(element).children("a").attr("href");
             // console.log('link: ', link);
-            var summary = $(element).children().attr("p.teaser")
+            var summary = $(element).children("a").children("p.teaser").text();
             // console.log('summary: ', summary);
             var results = {
                 title: title,
                 link: link,
                 summary: summary
             };
-            db.mongoHeadlines.insert({ results }, function (error, found) {
+            // console.log("results: ", results);
+            db.Article.create(results, function (error, found) {
                 if (error) throw error;
             })
         });
