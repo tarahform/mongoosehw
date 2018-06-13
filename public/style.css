@@ -30,11 +30,18 @@ textarea {
   margin-bottom:5px;
 }
 .transbox {
-margin: 30px;
+margin: 5%;
+padding: 4%;
 background-color: #ffffff;
 opacity: 0.6;
 filter: alpha(opacity=60); 
 }
 p {
   color: #000000;
+}
+#articles {
+  float: left;
+}
+#comments {
+  float: right;
 }

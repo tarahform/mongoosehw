@@ -24,11 +24,11 @@ $(document).on("click", "p", function () {
       // The title of the article
       $("#comments").append("<h2>" + data.title + "</h2>");
       // An input to enter a new title
-      $("#comments").append("<input id='titleinput' name='title' placeholder='Comment Title'>");
+      $("#comments").append("<form id='comForm'><input type='text' id='titleinput' name='title' placeholder='Comment Title'>");
       // A textarea to add a new note body
-      $("#comments").append("<textarea id='bodyinput' name='body' placeholder='Write Comment Here'></textarea>");
+      $("#comments").append("<textarea type='text' id='bodyinput' name='body' placeholder='Write Comment Here'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#comments").append("<button data-id='" + data._id + "' id='savecomment'>Submit</button>");
+      $("#comments").append("<button data-id='" + data._id + "' id='savecomment'>Submit</button></form>");
 
       // If there's a comment in the article
       if (data.comment) {
@@ -56,11 +56,10 @@ $(document).on("click", "#savecomment", function () {
       body: $("#bodyinput").val()
     }
   })
-    // With that done
     .then(function (data) {
       // Log the response
       console.log(data);
-      // Empty the comments section
+      // Empty the comForm section
       $("#comments").empty();
     });
 
