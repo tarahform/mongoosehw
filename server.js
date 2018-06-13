@@ -42,7 +42,6 @@ moondb.once("open", function(){
 });
 
 // Routes
-
 // A GET route for scraping the echoJS website
 app.get("/scrape", function (req, res) {
     request("https://www.npr.org/", function (error, response, html) {
