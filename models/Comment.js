@@ -2,11 +2,11 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-var CommentSchema = new Schema({
+var NoteSchema = new Schema({
   title: String,
   body: String
 });
 
-var Comment = mongoose.model("Comment", CommentSchema);
+var Note = mongoose.model("note", NoteSchema);
 
-module.exports = Comment;
+module.exports = Note;

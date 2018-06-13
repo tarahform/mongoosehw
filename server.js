@@ -66,10 +66,10 @@ app.get("/articles", function (req, res) {
     });
 });
 
-// Route for grabbing a specific Article by id, populate it with it's comment
+// Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function (req, res) {
     db.Article.findOne({ _id: req.params.id })
-        .populate("comment")
+        .populate("note")
         .then(function (dbArticle) {
             res.json(dbArticle);
         })
@@ -79,12 +79,12 @@ app.get("/articles/:id", function (req, res) {
 });
 
 
-// Route for saving/updating an Article's associated Comment
+// Route for saving/updating an Article's associated Note
 app.post("/articles/:id", function (req, res) {
     console.log(req.body);
-    db.Comment.create(req.body)
-        .then(function (dbComment) {
-            return db.Article.findOneAndUpdate({ _id: req.params.id }, { comment: dbComment._id }, { new: true })
+    db.Note.create(req.body)
+        .then(function (dbNote) {
+            return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true })
         })
         .then(function (dbArticle) {
             res.json(dbArticle);
