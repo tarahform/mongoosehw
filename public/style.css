@@ -1,4 +1,3 @@
-body { background-color: rgb(167, 203, 233) }
 #articles {
   display: inline-block;
   overflow: auto;
@@ -6,7 +5,10 @@ body { background-color: rgb(167, 203, 233) }
 textarea, input {
   display: block;
   width: 100%;
-  background-color:white;
+}
+.jumbotron{
+  background: none;
+  color: white;
 }
 input {
   height: 36px;
@@ -15,9 +17,6 @@ input {
 textarea {
   height: 200px;
   font-size: 18px;
-}
-#titleHr {
-  margin-bottom: 5%;
 }
 #articleHr {
   height: 8px;
@@ -32,8 +31,8 @@ textarea {
 .transbox {
 margin: 5%;
 padding: 4%;
-background-color: #ffffff;
 opacity: 0.6;
+background: grey;
 filter: alpha(opacity=60); 
 }
 p {
@@ -44,4 +43,15 @@ p {
 }
 #comments {
   float: right;
+}
+.bg {
+  background-image: url("./img/jumbo.jpg");
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body, html {
+  height: 100%;
+  margin: 0;
 }
