@@ -24,8 +24,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI);
+//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect("mongodb://heroku_3k6m6rnz:s693r9qegm9ee7i3jll2kg0ech@ds215089.mlab.com:15089/heroku_3k6m6rnz");
 
 // Routes
 // A GET route for scraping the echoJS website
