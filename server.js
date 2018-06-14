@@ -9,7 +9,7 @@ var cheerio = require("cheerio");
 // Require all models
 var db = require("./models");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
@@ -24,10 +24,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoosehw";
-mongoose.connect(MONGODB_URI, {
-    useMongoClient: true
-});
+//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect("mongodb://heroku_3k6m6rnz:s693r9qegm9ee7i3jll2kg0ech@ds215089.mlab.com:15089/heroku_3k6m6rnz");
 
 // Routes
 // A GET route for scraping the echoJS website
@@ -66,10 +64,10 @@ app.get("/articles", function (req, res) {
     });
 });
 
-// Route for grabbing a specific Article by id, populate it with it's comment
+// Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function (req, res) {
     db.Article.findOne({ _id: req.params.id })
-        .populate("comment")
+        .populate("note")
         .then(function (dbArticle) {
             res.json(dbArticle);
         })
@@ -79,12 +77,12 @@ app.get("/articles/:id", function (req, res) {
 });
 
 
-// Route for saving/updating an Article's associated Comment
+// Route for saving/updating an Article's associated Note
 app.post("/articles/:id", function (req, res) {
     console.log(req.body);
-    db.Comment.create(req.body)
-        .then(function (dbComment) {
-            return db.Article.findOneAndUpdate({ _id: req.params.id }, { comment: dbComment._id }, { new: true })
+    db.Note.create(req.body)
+        .then(function (dbNote) {
+            return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true })
         })
         .then(function (dbArticle) {
             res.json(dbArticle);
