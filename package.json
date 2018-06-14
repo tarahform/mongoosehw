@@ -1,5 +1,5 @@
 {
-  "name": "mongoosehw",
+  "name": "theonion",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tarahform/mongoosehw.git"
+    "url": "git+https://github.com/tarahform/theonion.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tarahform/mongoosehw/issues"
+    "url": "https://github.com/tarahform/theonion/issues"
   },
-  "homepage": "https://github.com/tarahform/mongoosehw#readme",
+  "homepage": "https://github.com/tarahform/theonion#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
