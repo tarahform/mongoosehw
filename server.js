@@ -24,8 +24,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect("mongodb://heroku_3k6m6rnz:s693r9qegm9ee7i3jll2kg0ech@ds215089.mlab.com:15089/heroku_3k6m6rnz");
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoosehw";
+mongoose.connect(MONGODB_URI);
 
 // Routes
 // A GET route for scraping the echoJS website
@@ -64,10 +64,10 @@ app.get("/articles", function (req, res) {
     });
 });
 
-// Route for grabbing a specific Article by id, populate it with it's note
+// Route for grabbing a specific Article by id, populate it with it's comment
 app.get("/articles/:id", function (req, res) {
     db.Article.findOne({ _id: req.params.id })
-        .populate("note")
+        .populate("comment")
         .then(function (dbArticle) {
             res.json(dbArticle);
         })
@@ -77,12 +77,12 @@ app.get("/articles/:id", function (req, res) {
 });
 
 
-// Route for saving/updating an Article's associated Note
+// Route for saving/updating an Article's associated Comment
 app.post("/articles/:id", function (req, res) {
     console.log(req.body);
-    db.Note.create(req.body)
-        .then(function (dbNote) {
-            return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true })
+    db.Comment.create(req.body)
+        .then(function (dbComment) {
+            return db.Article.findOneAndUpdate({ _id: req.params.id }, { comment: dbComment._id }, { new: true })
         })
         .then(function (dbArticle) {
             res.json(dbArticle);

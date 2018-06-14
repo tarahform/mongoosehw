@@ -2,13 +2,13 @@
 $.getJSON("/articles", function (data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>" + "<p>" + data[i].summary + "</p><hr id='articleHr'>");
+    $("#articles").append("<div class='articleDiv' data-id='" + data[i]._id + "'><p>" + data[i].title + "<br />" + data[i].link + "</p>" + "<p>" + data[i].summary + "</p></div><hr id='articleHr'>");
   }
 });
 
 
 // Whenever someone clicks a p tag
-$(document).on("click", "p", function () {
+$(document).on("click", ".articleDiv", function () {
   $("#comments").empty();
   // Save the id from the p tag
   var thisId = $(this).attr("data-id");
