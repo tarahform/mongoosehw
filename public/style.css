@@ -28,14 +28,17 @@ textarea {
   margin-top: 5px;
   margin-bottom:5px;
 }
-.transbox {
+#row1 {
 margin: 5%;
 padding: 4%;
 opacity: 0.6;
-background: grey;
-filter: alpha(opacity=60); 
+background: rgb(123,111,122);
+color: white;
+font-weight: bold;
+
 }
 p {
+  font-weight: bold;
   color: #000000;
 }
 #articles {
@@ -43,15 +46,18 @@ p {
 }
 #comments {
   float: right;
+  font-weight: bold;
+  color: #000000;
 }
-.bg {
-  background-image: url("./img/jumbo.jpg");
-  height: 100%; 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 body, html {
   height: 100%;
   margin: 0;
+  background-image: url("./img/jumbo.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  opacity: 0.6;
+  background: rgb(123,111,122); 
 }
