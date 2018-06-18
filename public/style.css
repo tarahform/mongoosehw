@@ -29,13 +29,12 @@ textarea {
   margin-bottom:5px;
 }
 #row1 {
-margin: 5%;
 padding: 4%;
 opacity: 0.6;
 background: rgb(123,111,122);
 color: white;
 font-weight: bold;
-
+width: 100%;
 }
 p {
   font-weight: bold;
@@ -43,11 +42,15 @@ p {
 }
 #articles {
   float: left;
+  background: rgb(123,111,122); 
+  padding: 5%;
 }
 #comments {
   float: right;
   font-weight: bold;
   color: #000000;
+  background: rgb(123,111,122); 
+  padding: 5%;
 }
 
 body, html {
@@ -58,6 +61,4 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed; 
-  opacity: 0.6;
-  background: rgb(123,111,122); 
 }
